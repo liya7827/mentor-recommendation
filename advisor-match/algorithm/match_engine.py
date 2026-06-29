@@ -1,6 +1,6 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
-import sqlite3
+import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
@@ -12,7 +12,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DB_PATH = PROJECT_ROOT / "data" / "clean" / "mentors_clean.db"
+DATA_FILE = PROJECT_ROOT / "mentors_data.json"
 TABLE_NAME = "mentors"
 RETURN_FIELDS = ["id", "name", "title", "school", "province", "college", "area", "score", "email", "homepage_url"]
 MIN_SCORE = 0.05
@@ -69,12 +69,11 @@ def _normalize_candidate(mentor: dict, score: float = 0.0) -> dict:
 
 
 def _load_records() -> list[dict]:
-    if not DB_PATH.exists():
+    if not DATA_FILE.exists():
         return []
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.row_factory = sqlite3.Row
-        rows = conn.execute(f'SELECT * FROM "{TABLE_NAME}"').fetchall()
-    return [{key: _safe_text(row[key]) for key in row.keys()} for row in rows]
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return [{key: _safe_text(item.get(key, "")) for key in item.keys()} for item in data]
 
 
 def _build_state() -> TfidfState:
