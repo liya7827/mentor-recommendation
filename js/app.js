@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             return 'http://127.0.0.1:5000';
         }
-        return 'return 'https://liyaasdfg.pythonanywhere.com';';
+        return 'https://liyaasdfg.pythonanywhere.com';
     };
     
     const BASE_URL = getBaseUrl();
