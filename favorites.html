@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心仪导师 - 研究生导师智能推荐系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="workspace-body">
+
+<nav class="navbar navbar-dark bg-dark-custom px-4 app-navbar">
+    <a class="navbar-brand fw-bold fs-5" href="index.html">研究生导师智能推荐系统</a>
+    <a class="btn btn-outline-light btn-sm fw-bold" href="index.html">
+        返回搜索
+    </a>
+</nav>
+
+<div class="d-flex workspace-container">
+    <aside class="sidebar bg-white border-end pt-3">
+        <div class="sidebar-label px-3 mb-2 small fw-bold">功能模块</div>
+        <ul class="nav flex-column nav-pills custom-nav-pills px-2">
+            <li class="nav-item mb-1">
+                <a class="nav-link" href="index.html">意向筛选</a>
+            </li>
+            <li class="nav-item mb-1">
+                <a class="nav-link active" href="favorites.html">心仪导师</a>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="result-panel flex-grow-1 bg-light p-4 custom-scrollbar">
+        <section class="mb-4">
+            <div class="section-head d-flex justify-content-between align-items-center gap-3 mb-3 flex-wrap">
+                <div>
+                    <div class="panel-eyebrow">心仪导师</div>
+                    <h5 class="fw-bold mb-1">心仪导师</h5>
+                    <div class="text-muted small">已收藏 <span id="favoriteCount">0</span> 位导师</div>
+                </div>
+                <button class="btn btn-theme btn-sm" id="btnFavoriteAdvice" type="button">
+                    生成智能择师建议
+                </button>
+            </div>
+            <div id="favoriteAdviceBox" class="ai-advice-box d-none mb-3"></div>
+            <div id="favoriteMentorsContainer" class="row"></div>
+        </section>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/favorites.js"></script>
+</body>
+</html>
