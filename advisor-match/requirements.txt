@@ -1,0 +1,11 @@
+Flask
+flask-cors
+pandas
+numpy
+scikit-learn
+jieba
+pytest
+requests
+openpyxl
+openai
+python-dotenv

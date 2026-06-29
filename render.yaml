@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: mentor-recommendation-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r advisor-match/requirements.txt
+    startCommand: cd advisor-match && python -m backend.app
+    envVars:
+      - key: PYTHONPATH
+        value: /opt/render/project/src/advisor-match
+      - key: ARK_API_KEY
+        sync: false
+      - key: ARK_MODEL
+        value: doubao-seed-2-0-lite-260428
+      - key: ARK_BASE_URL
+        value: https://ark.cn-beijing.volces.com/api/v3
+    healthCheckPath: /api/health
